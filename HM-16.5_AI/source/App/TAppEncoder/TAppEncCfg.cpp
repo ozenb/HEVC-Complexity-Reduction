@@ -1076,7 +1076,7 @@ Bool TAppEncCfg::parseCfg( Int argc, Char* argv[] )
   ("SEIMasteringDisplayMinLuminance",                 m_masteringDisplay.minLuminance,                      0u, "Specifies the mastering display minimum luminance value in units of 1/10000 candela per square metre (32-bit code value)")
   ("SEIMasteringDisplayPrimaries",                    cfg_DisplayPrimariesCode,       cfg_DisplayPrimariesCode, "Mastering display primaries for all three colour planes in CIE xy coordinates in increments of 1/50000 (results in the ranges 0 to 50000 inclusive)")
   ("SEIMasteringDisplayWhitePoint",                   cfg_DisplayWhitePointCode,     cfg_DisplayWhitePointCode, "Mastering display white point CIE xy coordinates in normalised increments of 1/50000 (e.g. 0.333 = 16667)")
-    
+
   ;
 
   for(Int i=1; i<MAX_GOP+1; i++)
@@ -1439,7 +1439,7 @@ Bool TAppEncCfg::parseCfg( Int argc, Char* argv[] )
       m_masteringDisplay.whitePoint[idx] = UShort((cfg_DisplayWhitePointCode.values.size() > idx) ? cfg_DisplayWhitePointCode.values[idx] : 0);
     }
   }
-    
+
   if( m_toneMappingInfoSEIEnabled && !m_toneMapCancelFlag )
   {
     if( m_toneMapModelId == 2 && !cfg_startOfCodedInterval.values.empty() )
@@ -2316,7 +2316,7 @@ Void TAppEncCfg::xPrintParameter()
 	// Invoke "video_to_cu_depth.py" with Tensorflow to predict the CU partition for the whole YUV sequence.
 	char cmd[100];
 	// Note: only Python 3 is supported.
-	sprintf(cmd, "python video_to_cu_depth.py %s %d %d %d", m_pchInputFile, m_iSourceWidth, m_iSourceHeight, m_iQP);
+	sprintf(cmd, "python3 video_to_cu_depth.py %s %d %d %d", m_pchInputFile, m_iSourceWidth, m_iSourceHeight, m_iQP);
 	printf("%s\n", cmd);
 	assert(system(cmd)==0);
 	// 20171221 end
